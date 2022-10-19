@@ -5,13 +5,27 @@ public class University {
     String fullName;
     String shortName;
     int yearOfFoundation;
+
+    public University() {
+
+    }
+
+    public StudyProfile getMainProfile() {
+        return mainProfile;
+    }
+
+    public void setMainProfile(StudyProfile mainProfile) {
+        this.mainProfile = mainProfile;
+    }
+
     private StudyProfile mainProfile;
 
-    public University(String id, String fullName, String shortName, int yearOfFoundation) {
+    public University(String id, String fullName, String shortName, int yearOfFoundation, StudyProfile mainProfile) {
         this.id = id;
         this.fullName = fullName;
         this.shortName = shortName;
         this.yearOfFoundation = yearOfFoundation;
+        this.mainProfile = mainProfile;
     }
 
     public String getId() {
@@ -55,5 +69,6 @@ public class University {
                 ", yearOfFoundation=" + yearOfFoundation +
                 '}';
     }
+
 
 }
