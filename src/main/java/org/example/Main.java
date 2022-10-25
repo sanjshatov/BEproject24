@@ -10,15 +10,31 @@ public class Main {
     public static void main(String[] args) throws IOException {
         List<University> universities = Reader.readUniversity("D:\\java_projects\\sources\\BEproject\\src\\main\\resources\\universityInfo.xlsx");
         UniversityComparator universityComparator = UtilClass.getUniversityComparator(UniversityComparatorOption.ID);
-        universities.stream()
-                .sorted(universityComparator)
-                .forEach(System.out::println);
+        universities.sort(universityComparator);
+        String universitiesToJson = JsonUtil.universityListToJson(universities);
+        System.out.println(universitiesToJson);
+        List<University> universitiesFromJson = JsonUtil.universityListFromJson(universitiesToJson);
+        universitiesFromJson.forEach(university -> {
+            String universityToJson = JsonUtil.universityToJson(university);
+            System.out.println(universityToJson);
+            University universityFromJson = JsonUtil.universityFromJson(universityToJson);
+            System.out.println(universityFromJson);
+        });
+        System.out.println(universities.size() == universitiesFromJson.size());
 
         List<Student> students = Reader.readStudent("D:\\java_projects\\sources\\BEproject\\src\\main\\resources\\universityInfo.xlsx");
         StudentComparator studentComparator = UtilClass.getStudentComparator(StudentComparatorOption.COURSE);
-        students.stream()
-                .sorted(studentComparator)
-                .forEach(System.out::println);
+        students.sort(studentComparator);
+        String studentsToJson = JsonUtil.studentListToJson(students);
+        System.out.println(studentsToJson);
+        List<Student> studentsFromJson = JsonUtil.studentListFromJson(studentsToJson);
+        studentsFromJson.forEach(student -> {
+            String studentToJson = JsonUtil.studentToJson(student);
+            System.out.println(studentToJson);
+            Student studentFromJson = JsonUtil.studentFromJson(studentToJson);
+            System.out.println(studentFromJson);
+        });
+        System.out.println(students.size() == studentsFromJson.size());
 
     }
 }
