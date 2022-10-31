@@ -36,5 +36,7 @@ public class Main {
         });
         System.out.println(students.size() == studentsFromJson.size());
 
+        List<Statistics> statisticsList = StatisticsUtil.createStatistics(students, universities);
+        XlsWriter.createTable(statisticsList, "D:\\java_projects\\sources\\BEproject\\src\\main\\resources\\statistics.xlsx");
     }
 }
