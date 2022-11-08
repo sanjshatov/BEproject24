@@ -14,10 +14,10 @@ public class Student {
     float avgExamScore;
 
     public Student(String fullName, String universityId, int currentCourseNumber, float avgExamScore) {
-    this.fullName = fullName;
-    this.universityId = universityId;
-    this.currentCourseNumber = currentCourseNumber;
-    this.avgExamScore = avgExamScore;
+        this.fullName = fullName;
+        this.universityId = universityId;
+        this.currentCourseNumber = currentCourseNumber;
+        this.avgExamScore = avgExamScore;
     }
 
     public Student() {
@@ -55,6 +55,7 @@ public class Student {
     public void setAvgExamScore(float avgExamScore) {
         this.avgExamScore = avgExamScore;
     }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -64,5 +65,4 @@ public class Student {
                 ", avgExamScore=" + avgExamScore +
                 '}';
     }
-
 }

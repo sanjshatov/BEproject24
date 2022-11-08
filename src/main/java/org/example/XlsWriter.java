@@ -10,9 +10,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class XlsWriter {
+
+    private static final Logger logger = Logger.getLogger(XlsWriter.class.getName());
     public static void createTable(List<Statistics> statisticsList, String filePath) {
+        logger.log(Level.INFO, "Excel writer started");
+
         // создаем workbook
         XSSFWorkbook workbook = new XSSFWorkbook();
         // создаем лист
@@ -62,7 +68,10 @@ public class XlsWriter {
         try (FileOutputStream fileOutputStream = new FileOutputStream(filePath)) {
             workbook.write(fileOutputStream);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            logger.log(Level.SEVERE, "Excel file writer failed", e);
+            return;
         }
+
+        logger.log(Level.INFO, "Excel writer finished successfully");
     }
 }
