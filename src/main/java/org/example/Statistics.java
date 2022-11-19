@@ -1,11 +1,24 @@
 package org.example;
 
+
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlTransient;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Statistics {
+    @XmlElement(name = "universityProfile")
     private StudyProfile profile;
+    @XmlElement(name = "avgScore")
     private float avgExamScore;
+    @XmlTransient
     private int numberOfStudents;
+    @XmlTransient
     private int numberOfUniversities;
+    @XmlTransient
     private String fullName;
+
 
     public Statistics() {
 

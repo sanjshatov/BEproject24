@@ -4,6 +4,7 @@ import org.example.comparator.StudentComparator;
 import org.example.comparator.UniversityComparator;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.LogManager;
@@ -51,6 +52,16 @@ public class Main {
 
         List<Statistics> statisticsList = StatisticsUtil.createStatistics(students, universities);
         XlsWriter.createTable(statisticsList, "D:\\java_projects\\sources\\BEproject\\src\\main\\resources\\statistics.xlsx");
+
+        Structure structure = new Structure()
+                .setStudentList(students)
+                .setUniversityList(universities)
+                .setStatisticsList(statisticsList)
+                .setProcessDate(new Date());
+
+        org.example.XmlWriter.generateXmlReq(structure);
+        org.example.JsonWriter.writeJsonReq(structure);
+
 
         logger.log(Level.INFO, "Application finished");
 
